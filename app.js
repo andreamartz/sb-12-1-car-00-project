@@ -15,15 +15,16 @@ class Vehicle {
 class Car extends Vehicle {
   constructor(make, model, year) {
     super(make, model, year);
+    this.numWheels = 4;
   }
-  numWheels = 4;
 }
 
 class Motorcycle extends Vehicle {
   constructor(make, model, year) {
     super(make, model, year);
+    this.numWheels = 2;
   }
-  numWheels = 2;
+
   revEngine() {
     return "VROOM!!!";
   }
@@ -33,16 +34,16 @@ class Motorcycle extends Vehicle {
 class Garage {
   constructor(capacity) {
     this.capacity = capacity;
+    this.vehicles = [];
   }
-  vehicles = [];
   add(vehicle) {
     if (!(vehicle instanceof Vehicle)) {
-      throw new Error("Only vehicles are allowed in here!");
+      return "Only vehicles are allowed in here!";
     } else if (this.vehicles.length >= this.capacity) {
-      throw new Error("Sorry, we're full.");
+      return "Sorry, we're full.";
     } else {
-      console.log("Vehicle added!");
-      return this.vehicles.push(vehicle);
+      this.vehicles.push(vehicle);
+      return "Vehicle added!";
     }
   }
 }
